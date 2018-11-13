@@ -1,0 +1,180 @@
+/*
+Default Color
+Color name: Yellow;
+Color Code: #ffb606;
+*/
+/*Reset Css*/
+::-moz-selection {
+  background: #ffb606;
+}
+::selection {
+  background: #ffb606;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea {
+  color: #ffb606;
+}
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  border-color: #ffb606; 
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus,
+textarea.form-control:focus {
+  border-color: #ffb606;
+  box-shadow: 0 0px 0px #ffb606 inset, 0 0 0px #ffb606; 
+}
+a:hover,
+a:focus,
+a:active {
+  color: #ffb606;
+}
+/*---------------------------- End of Reset Code ----------------*/
+
+/* background */
+.blog-list-1x .blog-list-right .blog-subscriber .btn-search,
+.blog-list-1x .blog-list-right .tag-link a:hover,
+.blog-list-1x .blog-list-right .blog-search .btn-search,
+.blog-list-1x .blog-list-single .blog-list-content h3 a.btn-small:hover,
+.blog-list-1x .blog-list-single span,
+.job-single-1x .apply-job a.medical-btn-larg,
+.job-board-1x .single-job a:hover,
+.comming-soon-banner .overlay-text .footer-social-link ul li i:hover,
+.contact-us-1x .contact-address,
+.about-us-2x .about-us-left .btn-bordered:hover,
+.events-1x .events-single .events-single-content a.btn-small:hover,
+.events-1x .events-single b,
+.backtotop,
+.main-banner .overlay-text button.btn.btn-search,
+a.btn-circle,
+a.btn-bordered:hover,
+a.btn-ellips,
+a.btn-small ,
+a.btn-large {
+  background: #ffb606;
+}
+
+
+
+/* color */
+.blog-list-1x .blog-list-single .blog-list-content h3 .dropright button i,
+.sign-in-1x .sign-in-form h4 a,
+.blog-list-1x .blog-list-right .recent-popular-post .recent-popular-tab .recent-post .media a:hover,
+.blog-list-1x .blog-list-right .recent-popular-post ul.recent-popular-nav li .active,
+.blog-list-1x .blog-list-single .blog-list-content h3 i,
+.blog-list-1x .blog-list-single .blog-list-content h3 a.btn-small,
+.blog-list-1x .blog-list-single .blog-list-content h2 a:hover,
+.blog-single-1x .blog-single-left-content .comment-section .media .media-body h5 span a,
+.blog-single-1x .blog-single-left-content .comment-section .media .media-body h5,
+.job-single-1x .job-features i,
+.job-board-1x .single-job a,
+.job-board-1x .single-job p i,
+.job-board-1x .single-job h2 span,
+.course-details-1x .course-menu-nav .nav-tabs .nav-link.active i,
+.course-details-1x .course-menu-nav .nav-tabs .nav-link.active,
+.course-details-1x .course-details-sidebar .course-feature ul li i,
+.course-info-1x .course-info-right h3,
+.comming-soon-banner .overlay-text .subscribe-form .input-group a.btn-small:hover i,
+.course-header-1x .course-header-left .category ul li a:hover,
+.course-header-1x .course-grid-list .all-course-list .media .media-body h2 a:hover,
+.course-header-1x .course-header-right .course-tab .nav-tabs .nav-link.active,
+.about-us-2x .about-us-left .btn-bordered,
+.about-us-2x .about-us-left a.btn-small:hover,
+.about-us-2x .about-us-left h2 span,
+.pricing-plan-1x .single-pricing ul li i,
+.pricing-plan-1x .single-pricing h3,
+.events-banner .overlay-text h4,
+.blog-1x .blog-single .blog-single-content a:hover,
+.events-1x .events-single .events-single-content a.btn-small,
+.events-1x .events-single .events-single-content a:hover,
+.top-menu-1x .top-menu-middle ul li a:hover i,
+.footer-section-1x .footer-bottom ul li a:hover,
+.footer-section-1x .footer-bottom p a:hover,
+.footer-section-1x .footer-top .footer-top-right ul li,
+.footer-section-1x .footer-top .footer-top-left .footer-subscriber button.btn-subscriber,
+.footer-section-1x .footer-top .footer-top-left .single-link ul li a:hover,
+.single-course .single-course-content a:hover,
+.course-1x .course-menu button.active,
+.tesimonial-1x .single-testimonial p i,
+.cta-1x a.btn-small:hover,
+.dropdown-item:focus,
+.dropdown-item:hover,
+.btco-hover-menu .collapse ul > li:hover > a,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .active > .nav-link,
+a.btn-bordered {
+  color: #ffb606;
+}
+
+/*Border 2px*/
+a.btn-bordered {
+  border: 2px solid #ffb606;
+ }
+
+/* Border 1px */ 
+.sign-in-1x .sign-in-form h3:after,
+.contact-us-1x .title-left h2:after,
+.course-header-1x .course-header-left .filter-product .container input:checked ~ .checkmark,
+.course-header-1x .course-grid-list .all-course-list .media .media-body .btn-bordered,
+.about-us-2x .about-us-left a.btn-small,
+.pricing-plan-1x .single-pricing .btn-bordered,
+.main-banner .overlay-text button.btn.btn-search:focus {
+    border: 1px solid #ffb606; 
+}
+
+/* Border bottom 10px */ 
+.trapezoid {
+  border-bottom: 10px solid #ffb606;
+}
+/* Border top 100px */ 
+.featured-sticker {
+  border-top: 100px solid #ffb606;
+}
+
+/* Border bottom 2px */ 
+.pricing-plan-1x .single-pricing h2:before {
+  border-bottom: 2px solid #ffb606; 
+}
+
+/* Background Color */
+.course-pagination ul .page-item.active .page-link,
+.course-header-1x .course-header-left .filter-product .container input:checked ~ .checkmark,
+.course-header-1x .course-header-left .filter-product .container:hover input ~ .checkmark {
+  background-color: #ffb606; 
+}
+
+/* Border top 2px */
+.course-details-1x .course-menu-nav .nav-tabs .nav-link.active {
+  border-top: 2px solid #ffb606;
+}
+
+/* Overlay for speaker */
+.single-speaker .hvrbox .hvrbox-layer_top {
+    background: rgba(255, 182, 6, 0.85);
+}
+
+
+
+
+
