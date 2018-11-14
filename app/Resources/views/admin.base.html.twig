@@ -1,0 +1,128 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}RLV{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" type="image/png" href="/asset/images/favicon.png"/>
+
+    <!-- Bootstrap -->
+    <link href="/asset/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontawsome -->
+    <link href="/asset/fonts/css/fontawesome-all.min.css" rel="stylesheet">
+    <!-- Animate CSS-->
+    <link href="/asset/css/animate.css" rel="stylesheet">
+    <!-- menu CSS-->
+    <link href="/asset/css/bootstrap-4-navbar.css" rel="stylesheet">
+    <!-- menu CSS-->
+    <link href="/asset/slick/slick.css" rel="stylesheet">
+    <!-- Lightbox Gallery -->
+    <link href="/asset/inc/lightbox/css/jquery.fancybox.css" rel="stylesheet">
+    <!-- Preloader CSS-->
+    <link href="/asset/css/fakeLoader.css" rel="stylesheet">
+    <!-- Video popup CSS-->
+    <link href="/asset/css/magnific-popup.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/asset/style.css" rel="stylesheet">
+    <!-- Color CSS -->
+    <link rel="/asset/stylesheet" href="color/color-switcher.css">
+    <!-- Responsive CSS -->
+    <link href="/asset/css/responsive.css" rel="stylesheet">
+</head>
+
+<body>
+    
+    <!-- Preloader -->
+    <div id="fakeloader"></div>
+    
+    <div class="main-menu-1x">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-menu">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light btco-hover-menu">
+                            <a class="navbar-brand" href="#">
+                                <img src="/asset/images/logo.png" class="d-inline-block align-top" alt="">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+    
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto main-menu-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Dashboard</a>
+                                    </li>
+    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Upload Video</a>
+                                    </li>
+    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">List</a>
+                                    </li>
+    
+                                    <li class="nav-item sign-in">
+                                        <a class="nav-link" href="/logout">Signout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% block javascripts %}{% endblock %}
+    
+    <footer class="footer-section-1x">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <p>© <a href="#">Rlv</a> All Rights Reserved </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/asset/js/jquery.min.js"></script>
+<script src="/asset/js/jquery.min.js"></script>
+<script src="/asset/js/popper.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Wow Script -->
+<script src="/asset/js/wow.min.js"></script>
+<!-- Counter Script -->
+<script src="/asset/js/waypoints.min.js"></script>
+<script src="/asset/js/jquery.counterup.min.js"></script>
+<!-- Masonry Portfolio Script -->
+<script src='/asset/js/jquery.mixitup.min.js'></script>
+<!-- Lightbox js -->
+<script src="/asset/inc/lightbox/js/jquery.fancybox.pack.js"></script>
+<script src="/asset/inc/lightbox/js/lightbox.js"></script>
+<!-- loader js-->
+<script src="/asset/js/fakeLoader.min.js"></script>
+<!-- Scroll bottom to top -->
+<script src="/asset/js/scrolltopcontrol.js"></script>
+<!-- menu -->
+<script src="/asset/js/bootstrap-4-navbar.js"></script>
+<!-- youtube popup video -->
+<script src="/asset/js/jquery.magnific-popup.min.js"></script>
+<!-- Testimonial slider Script -->
+<script src="/asset/slick/slick.min.js"></script>
+<!-- Color switcher js -->
+<script src="/asset/js/color-switcher.js"></script>
+<!-- Custom script -->
+<script src="/asset/js/custom.js"></script>
+
+</html>
