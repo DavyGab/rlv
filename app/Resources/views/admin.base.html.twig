@@ -1,120 +1,222 @@
-<html>
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}RLV{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-    <!-- Favicon icon -->
-    <link rel="shortcut icon" href="{{ asset('asset/images/favicon.png') }}" />
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="/admin-assets/img/favicon.ico">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <!-- Bootstrap -->
-    <link href="{{ asset('asset/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Fontawsome -->
-    <link href="{{ asset('asset/fonts/css/fontawesome-all.min.css') }}" rel="stylesheet">
-    <!-- Animate CSS-->
-    <link href="{{ asset('asset/css/animate.css') }}" rel="stylesheet">
-    <!-- menu CSS-->
-    <link href="{{ asset('asset/css/bootstrap-4-navbar.css') }}" rel="stylesheet">
-    <!-- menu CSS-->
-    <link href="{{ asset('asset/slick/slick.css') }}" rel="stylesheet">
-    <!-- Lightbox Gallery -->
-    <link href="{{ asset('asset/inc/lightbox/css/jquery.fancybox.css') }}" rel="stylesheet">
-    <!-- Preloader CSS-->
-    <link href="{{ asset('asset/css/fakeLoader.css') }}" rel="stylesheet">
-    <!-- Video popup CSS-->
-    <link href="{{ asset('asset/css/magnific-popup.css') }}" rel="stylesheet">
-    <!-- Main CSS -->
-    <link href="{{ asset('asset/style.css') }}" rel="stylesheet">
-    <!-- Color CSS -->
-    <link rel="stylesheet" href="{{ asset('asset/color/color-switcher.css') }}">
-    <!-- Responsive CSS -->
-    <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet">
-</head>
+        <title>RLV Admin Portal</title>
 
-<body>
-    
-    <!-- Preloader -->
-    <div id="fakeloader"></div>
-    
-    <div class="main-menu-1x">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="main-menu">
-                        <nav class="navbar navbar-expand-lg navbar-light bg-light btco-hover-menu">
-                            <a class="navbar-brand" href="#">
-                                <img src="/asset/images/logo.png" class="d-inline-block align-top" alt="">
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width" />
+
+        <!-- Bootstrap core CSS     -->
+        <link href="/admin-assets/css/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- Animation library for notifications   -->
+        <link href="/admin-assets/css/animate.min.css" rel="stylesheet"/>
+
+        <!--  Light Bootstrap Table core CSS    -->
+        <link href="/admin-assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+        <!--  CSS for Demo Purpose, don't include it in your project     -->
+        <link href="/admin-assets/css/demo.css" rel="stylesheet" />
+
+        <!--     Fonts and icons     -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+        <link href="/admin-assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <div class="sidebar" data-color="azure" data-image="/admin-assets/img/sidebar-5.jpg">
+
+                <!--
+                    Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+                    Tip 2: you can also add an image using data-image tag
+                -->
+
+                <div class="sidebar-wrapper">
+                    <div class="logo">
+                        <a href="#" class="simple-text">
+                            RLV Admin Panel
+                        </a>
+                    </div>
+
+                    <ul class="nav">
+                        <li id="page-dashboard">
+                            <a href="{{ url('admin_dashboard') }}">
+                                <i class="pe-7s-graph"></i>
+                                <p>Dashboard</p>
                             </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
+                        </li>
+                        <li id="page-upload-video">
+                            <a href="{{ url('video_new') }}">
+                                <i class="pe-7s-user"></i>
+                                <p>Upload Video</p>
+                            </a>
+                        </li>
+                        <li id="page-video-list">
+                            <a href="{{ url('video_index') }}">
+                                <i class="pe-7s-note2"></i>
+                                <p>Video List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Main Content -->
+            <div class="main-panel">
+                <nav class="navbar navbar-default navbar-fixed">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
                             </button>
-    
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav ml-auto main-menu-nav">
-                                    <li class="nav-item" id="page-dashboard">
-                                        <a class="nav-link" href="{{ url('admin_dashboard') }}">Dashboard</a>
-                                    </li>
-    
-                                    <li class="nav-item" id="page-upload-video">
-                                        <a class="nav-link" href="{{ url('video_new') }}">Upload Video</a>
-                                    </li>
-    
-                                    <li class="nav-item" id="page-video-list">                       
-                                        <a class="nav-link" href="{{ url('video_index') }}">List</a>
-                                    </li>
-    
-                                    <li class="nav-item sign-in" id="page-singout">
-                                        <a class="nav-link" href="/logout">Signout</a>
-                                    </li>
-                                </ul>
+                            <a class="navbar-brand" href="#">Dashboard</a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-dashboard"></i>
+                                        <p class="hidden-lg hidden-md">Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-globe"></i>
+                                        <b class="caret hidden-lg hidden-md"></b>
+                                        <p class="hidden-lg hidden-md">
+                                            5 Notifications
+                                            <b class="caret"></b>
+                                        </p>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Notification 1</a></li>
+                                        <li><a href="#">Notification 2</a></li>
+                                        <li><a href="#">Notification 3</a></li>
+                                        <li><a href="#">Notification 4</a></li>
+                                        <li><a href="#">Another notification</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <i class="fa fa-search"></i>
+                                        <p class="hidden-lg hidden-md">Search</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="">
+                                        <p>Account</p>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <p>
+                                            Dropdown
+                                            <b class="caret"></b>
+                                        </p>
+
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="/logout">
+                                        <p>Log out</p>
+                                    </a>
+                                </li>
+                                <li class="separator hidden-lg"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="card">
+                                <div class="content">
+                                {% block body %}{% endblock %}                            
                             </div>
-                        </nav>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        {% block body %}{% endblock %}
-    </div>
-    {% block javascripts %}{% endblock %}
-    
-    <footer class="footer-section-1x">
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <p>© <a href="#">Rlv</a> All Rights Reserved </p>
-                    </div>
-                </div>
+
+        {% block javascripts %}{% endblock %}
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> RLV Application
+                </p>
             </div>
-        </div>
-    </footer>
+        </footer>
+
+    </div>
+</div>
+
+<!-- END Main Content -->    
 </body>
 
-<script src="{{ asset('asset/js/tether.min.js') }}"></script>
-<script src="{{ asset('asset/js/jquery.min.js') }}"></script>
-<script src="{{ asset('asset/js/popper.min.js') }}"></script>
-<script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('asset/js/wow.min.js') }}"></script>
-<script src="{{ asset('asset/js/waypoints.min.js') }}"></script>
-<script src="{{ asset('asset/js/jquery.counterup.min.js') }}"></script>
-<script src="{{ asset('asset/js/jquery.mixitup.min.js') }}"></script>
-<script src="{{ asset('asset/inc/lightbox/js/jquery.fancybox.pack.js') }}"></script>
-<script src="{{ asset('asset/inc/lightbox/js/lightbox.js') }}"></script>
-<script src="{{ asset('asset/js/fakeLoader.min.js') }}"></script>
-<script src="{{ asset('asset/js/scrolltopcontrol.js') }}"></script>
-<script src="{{ asset('asset/js/bootstrap-4-navbar.js') }}"></script>
-<script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('asset/js/custom.js') }}"></script>
-<script src="{{ asset('asset/js/color-switcher.js') }}"></script>
-<script src="{{ asset('asset/js/color-switcher-active.js') }}"></script>
-<script src="{{ asset('asset/slick/slick.min.js') }}"></script>
+<!--   Core JS Files   -->
+<script src="/admin-assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="/admin-assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="/admin-assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="/admin-assets/js/bootstrap-notify.js"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="/admin-assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
 <script type="text/javascript">
-    $("#"+activePage).addClass('active');
+    $("#" + activePage).addClass('active');
 </script>
 </html>
