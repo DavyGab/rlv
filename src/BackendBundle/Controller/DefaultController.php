@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
-* @Route("/admin/")
+* @Route("/admin")
 */
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="admin_dashboard")
      */
     public function indexAction()
     {

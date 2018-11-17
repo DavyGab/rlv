@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.base.html.twig' %}
 
 {% block body %}
     <h1>Videos list</h1>
@@ -50,4 +50,9 @@
             <a href="{{ path('video_new') }}">Create a new video</a>
         </li>
     </ul>
+{% endblock %}
+{% block javascripts %}
+    <script type='text/javascript'>
+        var activePage="page-video-list";
+    </script>
 {% endblock %}

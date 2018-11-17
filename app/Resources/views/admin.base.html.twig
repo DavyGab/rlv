@@ -5,30 +5,30 @@
     <title>{% block title %}RLV{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <!-- Favicon icon -->
-    <link rel="shortcut icon" type="image/png" href="/asset/images/favicon.png"/>
+    <link rel="shortcut icon" href="{{ asset('asset/images/favicon.png') }}" />
 
     <!-- Bootstrap -->
-    <link href="/asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Fontawsome -->
-    <link href="/asset/fonts/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="{{ asset('asset/fonts/css/fontawesome-all.min.css') }}" rel="stylesheet">
     <!-- Animate CSS-->
-    <link href="/asset/css/animate.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/animate.css') }}" rel="stylesheet">
     <!-- menu CSS-->
-    <link href="/asset/css/bootstrap-4-navbar.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/bootstrap-4-navbar.css') }}" rel="stylesheet">
     <!-- menu CSS-->
-    <link href="/asset/slick/slick.css" rel="stylesheet">
+    <link href="{{ asset('asset/slick/slick.css') }}" rel="stylesheet">
     <!-- Lightbox Gallery -->
-    <link href="/asset/inc/lightbox/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="{{ asset('asset/inc/lightbox/css/jquery.fancybox.css') }}" rel="stylesheet">
     <!-- Preloader CSS-->
-    <link href="/asset/css/fakeLoader.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/fakeLoader.css') }}" rel="stylesheet">
     <!-- Video popup CSS-->
-    <link href="/asset/css/magnific-popup.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/magnific-popup.css') }}" rel="stylesheet">
     <!-- Main CSS -->
-    <link href="/asset/style.css" rel="stylesheet">
+    <link href="{{ asset('asset/style.css') }}" rel="stylesheet">
     <!-- Color CSS -->
-    <link rel="/asset/stylesheet" href="color/color-switcher.css">
+    <link rel="stylesheet" href="{{ asset('asset/color/color-switcher.css') }}">
     <!-- Responsive CSS -->
-    <link href="/asset/css/responsive.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/responsive.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -53,19 +53,19 @@
     
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto main-menu-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Dashboard</a>
+                                    <li class="nav-item" id="page-dashboard">
+                                        <a class="nav-link" href="{{ url('admin_dashboard') }}">Dashboard</a>
                                     </li>
     
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Upload Video</a>
+                                    <li class="nav-item" id="page-upload-video">
+                                        <a class="nav-link" href="{{ url('video_new') }}">Upload Video</a>
                                     </li>
     
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">List</a>
+                                    <li class="nav-item" id="page-video-list">                       
+                                        <a class="nav-link" href="{{ url('video_index') }}">List</a>
                                     </li>
     
-                                    <li class="nav-item sign-in">
+                                    <li class="nav-item sign-in" id="page-singout">
                                         <a class="nav-link" href="/logout">Signout</a>
                                     </li>
                                 </ul>
@@ -95,34 +95,26 @@
     </footer>
 </body>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/asset/js/jquery.min.js"></script>
-<script src="/asset/js/jquery.min.js"></script>
-<script src="/asset/js/popper.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Wow Script -->
-<script src="/asset/js/wow.min.js"></script>
-<!-- Counter Script -->
-<script src="/asset/js/waypoints.min.js"></script>
-<script src="/asset/js/jquery.counterup.min.js"></script>
-<!-- Masonry Portfolio Script -->
-<script src='/asset/js/jquery.mixitup.min.js'></script>
-<!-- Lightbox js -->
-<script src="/asset/inc/lightbox/js/jquery.fancybox.pack.js"></script>
-<script src="/asset/inc/lightbox/js/lightbox.js"></script>
-<!-- loader js-->
-<script src="/asset/js/fakeLoader.min.js"></script>
-<!-- Scroll bottom to top -->
-<script src="/asset/js/scrolltopcontrol.js"></script>
-<!-- menu -->
-<script src="/asset/js/bootstrap-4-navbar.js"></script>
-<!-- youtube popup video -->
-<script src="/asset/js/jquery.magnific-popup.min.js"></script>
-<!-- Testimonial slider Script -->
-<script src="/asset/slick/slick.min.js"></script>
-<!-- Color switcher js -->
-<script src="/asset/js/color-switcher.js"></script>
-<!-- Custom script -->
-<script src="/asset/js/custom.js"></script>
+<script src="{{ asset('asset/js/tether.min.js') }}"></script>
+<script src="{{ asset('asset/js/jquery.min.js') }}"></script>
+<script src="{{ asset('asset/js/popper.min.js') }}"></script>
+<script src="{{ asset('asset/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('asset/js/wow.min.js') }}"></script>
+<script src="{{ asset('asset/js/waypoints.min.js') }}"></script>
+<script src="{{ asset('asset/js/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('asset/js/jquery.mixitup.min.js') }}"></script>
+<script src="{{ asset('asset/inc/lightbox/js/jquery.fancybox.pack.js') }}"></script>
+<script src="{{ asset('asset/inc/lightbox/js/lightbox.js') }}"></script>
+<script src="{{ asset('asset/js/fakeLoader.min.js') }}"></script>
+<script src="{{ asset('asset/js/scrolltopcontrol.js') }}"></script>
+<script src="{{ asset('asset/js/bootstrap-4-navbar.js') }}"></script>
+<script src="{{ asset('asset/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('asset/js/custom.js') }}"></script>
+<script src="{{ asset('asset/js/color-switcher.js') }}"></script>
+<script src="{{ asset('asset/js/color-switcher-active.js') }}"></script>
+<script src="{{ asset('asset/slick/slick.min.js') }}"></script>
 
+<script type="text/javascript">
+    $("#"+activePage).addClass('active');
+</script>
 </html>
