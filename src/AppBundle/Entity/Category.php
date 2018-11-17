@@ -28,11 +28,11 @@ class Category
      * @var string
      */
     private $slug;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+    
+     /**
+     * @var \Doctrine\Common\Collections\Collection|Video[]
      *
-     * @var string
-     */    
+     * @ORM\ManyToMany(targetEntity="Video", mappedBy="categories")
+     */
     private $videos;
 }

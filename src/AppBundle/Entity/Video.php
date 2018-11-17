@@ -45,12 +45,11 @@ class Video
      * @var string
      */    
     private $description;
-    
+        
     /**
-     * @ORM\Column(type="integer")
-     *
-     * @var integer
-     */    
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="videos")
+     * @ORM\JoinColumn(name="speaker_id", referencedColumnName="id")
+     */
     private $speaker;
 
     /**
@@ -61,11 +60,20 @@ class Video
     private $website;
         
     /**
-     * One video has one category.
-     * @OneToOne(targetEntity="Category")
-     * @JoinColumn(name="category", referencedColumnName="id")
+     * @var \Doctrine\Common\Collections\Collection|Category[]
+     *
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="videos")
+     * @ORM\JoinTable(
+     *  name="video_category",
+     *  joinColumns={
+     *      @ORM\JoinColumn(name="video_id", referencedColumnName="id")
+     *  },
+     *  inverseJoinColumns={
+     *      @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *  }
+     * )
      */
-    private $category;
+    private $categories;
 
     /**
      * @ORM\Column(type="datetime")
@@ -95,5 +103,5 @@ class Video
      * 
      * @var File
      */
-    private $imageFile;
+    private $imageFile;   
 }

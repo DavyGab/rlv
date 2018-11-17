@@ -18,6 +18,18 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+    
+    /**
+     * @ORM\Column(type="datetime")
+     */    
+    private $birthdate;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */    
+    private $gender;
 
     public function __construct()
     {
