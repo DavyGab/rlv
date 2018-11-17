@@ -1,12 +1,30 @@
 {% extends 'admin.layout.html.twig' %}
 {% block content %}
-    <h1>Video creation</h1>
-
+    <h1>Video creation</h1>    
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_label(form.slug, 'Slug', { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(form.slug, { 'attr': {'class': 'form-control'} }) }}
+
+        {{ form_label(form.title, 'Title', { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
+
+        {{ form_label(form.video_url, 'Url', { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(form.video_url, { 'attr': {'class': 'form-control'} }) }}
+
+        {{ form_label(form.description, 'Description', { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
+
+        {{ form_label(form.website, 'Website', { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(form.website, { 'attr': {'class': 'form-control'} }) }}    
+        
+        {{ form_label(form.speaker, 'Speaker', { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(form.speaker, { 'attr': {'class': 'form-control'} }) }}            
+        
+        {{ form_label(form.categories, 'Categories', { 'attr': {'class': 'form-control'} }) }}
+        {{ form_widget(form.categories, { 'attr': {'class': 'form-control'} }) }}                    
+    
         <input type="submit" value="Create" />
     {{ form_end(form) }}
-
     <ul>
         <li>
             <a href="{{ path('video_index') }}">Back to the list</a>

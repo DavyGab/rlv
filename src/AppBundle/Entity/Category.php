@@ -35,4 +35,41 @@ class Category
      * @ORM\ManyToMany(targetEntity="Video", mappedBy="categories")
      */
     private $videos;
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    public function getVideos() {
+        return $this->videos;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setSlug($slug) {
+        $this->slug = $slug;
+    }
+
+    public function setVideos(\Doctrine\Common\Collections\Collection $videos) {
+        $this->videos = $videos;
+    }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

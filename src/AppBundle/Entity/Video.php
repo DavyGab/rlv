@@ -104,7 +104,14 @@ class Video
      * @var File
      */
     private $imageFile;   
-    
+
+    public function __construct() 
+    {
+        $this->createdAt = new \DateTime();        
+        $this->updatedAt = new \DateTime();
+        $this->publishedAt = new \DateTime();
+    }
+
     public function getId() 
     {
         return $this->id;

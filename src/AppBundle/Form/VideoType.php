@@ -13,7 +13,7 @@ class VideoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('slug')->add('title')->add('video_url')->add('description')->add('website')->add('createdAt')->add('updatedAt')->add('publishedAt')->add('speaker')->add('categories');
+        $builder->add('slug')->add('title')->add('video_url')->add('description')->add('website')->add('speaker')->add('categories');
     }/**
      * {@inheritdoc}
      */
