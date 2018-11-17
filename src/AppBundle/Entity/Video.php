@@ -37,7 +37,7 @@ class Video
      *
      * @var string
      */    
-    private $video_url;
+    private $videoUrl;
     
     /**
      * @ORM\Column(type="string", length=1000)
@@ -104,4 +104,115 @@ class Video
      * @var File
      */
     private $imageFile;   
+    
+    public function getId() 
+    {
+        return $this->id;
+    }
+
+    public function getSlug() 
+    {
+        return $this->slug;
+    }
+
+    public function getTitle() 
+    {
+        return $this->title;
+    }
+
+    public function getVideoUrl() 
+    {
+        return $this->videoUrl;
+    }
+
+    public function getDescription() 
+    {
+        return $this->description;
+    }
+
+    public function getSpeaker() 
+    {
+        return $this->speaker;
+    }
+
+    public function getWebsite() 
+    {
+        return $this->website;
+    }
+
+    public function getCategories() 
+    {
+        return $this->categories;
+    }
+
+    public function getCreatedAt() 
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt() 
+    {
+        return $this->updatedAt;
+    }
+
+    public function getPublishedAt() 
+    {
+        return $this->publishedAt;
+    }
+
+    public function getImageFile() {
+        return $this->imageFile;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setSlug($slug) {
+        $this->slug = $slug;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    public function setVideoUrl($videoUrl) {
+        $this->videoUrl = $videoUrl;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    public function setSpeaker($speaker) {
+        $this->speaker = $speaker;
+    }
+
+    public function setWebsite($website) {
+        $this->website = $website;
+    }
+
+    public function setCategories(\Doctrine\Common\Collections\Collection $categories) {
+        $this->categories = $categories;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt) {
+        $this->createdAt = $createdAt;
+    }
+
+    public function setUpdatedAt(\DateTime $updatedAt) {
+        $this->updatedAt = $updatedAt;
+    }
+
+    public function setPublishedAt(\DateTime $publishedAt) {
+        $this->publishedAt = $publishedAt;
+    }
+
+    public function setImageFile(File $imageFile) {
+        $this->imageFile = $imageFile;
+    }
+
+
+    
+    
 }
