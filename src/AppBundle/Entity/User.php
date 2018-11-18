@@ -20,6 +20,20 @@ class User extends BaseUser
     protected $id;
     
     /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */    
+    private $lastName;
+    
+    /**
      * @ORM\Column(type="datetime")
      */    
     private $birthdate;
@@ -28,7 +42,7 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255)
      *
      * @var string
-     */    
+     */
     private $gender;
 
     public function __construct()
@@ -64,7 +78,21 @@ class User extends BaseUser
 
     public function setGender($gender) {
         $this->gender = $gender;
+    }  
+    
+    public function getFirstName() {
+        return $this->firstName;
     }
 
+    public function getLastName() {
+        return $this->lastName;
+    }
 
+    public function setFirstName($firstName) {
+        $this->firstName = $firstName;
+    }
+
+    public function setLastName($lastName) {
+        $this->lastName = $lastName;
+    }
 }

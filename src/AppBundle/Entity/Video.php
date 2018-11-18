@@ -95,7 +95,14 @@ class Video
      * @var \DateTime
      */    
     private $publishedAt;
-  
+ 
+    /**
+     * @ORM\Column(type="integer")
+     *
+     * @var integer
+     */
+    private $duration;
+    
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
@@ -166,6 +173,10 @@ class Video
     {
         return $this->publishedAt;
     }
+    
+    public function getDuration() {
+        return $this->duration;
+    }
 
     public function getImageFile() {
         return $this->imageFile;
@@ -215,11 +226,16 @@ class Video
         $this->publishedAt = $publishedAt;
     }
 
+    public function setDuration($duration) {
+        return $this->duration = $duration;
+    }    
+    
     public function setImageFile(File $imageFile) {
         $this->imageFile = $imageFile;
     }
-
-
     
-    
+    public function getSpeakerName() {
+        $user = $this->getSpeaker();
+        return $user->getFirstName()." ".$user->getLastName();
+    }
 }
