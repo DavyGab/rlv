@@ -1,9 +1,10 @@
 {% extends 'admin.layout.html.twig' %}
 {% block content %}
     <div> Admin Dashboard </div>
+    <div> Welcome {{ app.user.getUsername() }} </div>
 {% endblock %}
 {% block javascripts %}
     <script type='text/javascript'>
-        var activePage="page-dashboard";
+        var activeMenu="menu-dashboard";
     </script>
 {% endblock %}

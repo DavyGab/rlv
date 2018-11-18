@@ -1,0 +1,17 @@
+{% extends 'admin.base.html.twig' %}
+{% block body %}
+    <div id="content"> {% block content %}{% endblock %} </div>
+{% endblock %}
+
+{% block subMenuBar %}
+    <a class="navbar-brand" id="page-video-list" href="{{ url('video_index') }}">Video List</a>
+    <a class="navbar-brand" id="page-upload-video" href="{{ url('video_new') }}">Upload Video</a>        
+{% endblock %}
+
+{% block javascripts %}
+    <script type='text/javascript'>
+        var activeMenu="menu-video";
+    </script>
+    {% block javascriptSubMenu %}
+    {% endblock %}    
+{% endblock %}

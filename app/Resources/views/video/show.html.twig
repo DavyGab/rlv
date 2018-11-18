@@ -1,4 +1,4 @@
-{% extends 'admin.base.html.twig' %}
+{% extends 'admin.video.layout.html.twig' %}
 
 {% block body %}
     <h1>Video</h1>
@@ -57,4 +57,9 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+{% endblock %}
+{% block javascriptSubMenu %}
+    <script type='text/javascript'>
+        var activePage="page-video-list";
+    </script>
 {% endblock %}

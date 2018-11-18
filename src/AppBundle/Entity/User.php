@@ -37,4 +37,34 @@ class User extends BaseUser
         // your own logic
 	$this->roles = array('ROLE_ADMIN');
     }
+    
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getBirthdate() {
+        return $this->birthdate;
+    }
+
+    public function getGender() {
+        return $this->gender;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setBirthdate($birthdate) {
+        $this->birthdate = $birthdate;
+    }
+
+    public function setGender($gender) {
+        $this->gender = $gender;
+    }
+
+
 }
