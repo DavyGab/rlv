@@ -1,9 +1,9 @@
 {% extends 'admin.video.layout.html.twig' %}
-
 {% block body %}
+    <div style="overflow:scroll">
     <h1>Videos list</h1>
 
-    <table>
+    <table id="video-list" class="table table-striped table-bordered" style="width:100%;">
         <thead>
             <tr>
                 <th>Id</th>
@@ -50,6 +50,7 @@
             <a href="{{ path('video_new') }}">Create a new video</a>
         </li>
     </ul>
+    </div>
 {% endblock %}
 {% block javascriptSubMenu %}
     <script type='text/javascript'>

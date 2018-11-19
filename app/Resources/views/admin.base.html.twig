@@ -28,6 +28,7 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
         <link href="/admin-assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
         <link href="/admin-assets/css/common.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="/asset/css/datatables.min.css"/>
 
     </head>
     <body>
@@ -212,9 +213,14 @@
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="/admin-assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+<script type="text/javascript" src="/asset/js/datatables.min.js"></script>
+
 
 <script type="text/javascript">
     $("#" + activeMenu).addClass('active');
     $("#" + activePage).addClass('active');
+    if ($('#video-list').length) {
+        $('#video-list').DataTable();
+    }
 </script>
 </html>
