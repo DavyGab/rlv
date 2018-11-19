@@ -1,6 +1,12 @@
 {% extends 'admin.video.layout.html.twig' %}
 {% block content %}
-    <h1>Video creation</h1>    
+    <h1>
+        {% if action == 'create' %}
+ 	    Upload Video
+        {% else %}
+            Edit Video
+        {% endif %}
+    </h1>    
     {{ form_start(form) }}
         {{ form_label(form.slug, 'Slug', { 'attr': {'class': 'form-control'} }) }}
         {{ form_widget(form.slug, { 'attr': {'class': 'form-control'} }) }}
@@ -26,7 +32,7 @@
         {{ form_label(form.duration, 'Duration', { 'attr': {'class': 'form-control'} }) }}
         {{ form_widget(form.duration, { 'attr': {'class': 'form-control'} }) }}                            
     
-        <input type="submit" value="Create" />
+        <input type="submit" value="{% if action == 'create' %}Create{% else %}Update{% endif %}" />
     {{ form_end(form) }}
     <ul>
         <li>

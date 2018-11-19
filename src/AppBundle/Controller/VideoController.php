@@ -56,6 +56,7 @@ class VideoController extends Controller
         return $this->render('video/new.html.twig', array(
             'video' => $video,
             'form' => $form->createView(),
+            'action' => 'create'
         ));
     }
 
@@ -93,10 +94,11 @@ class VideoController extends Controller
             return $this->redirectToRoute('video_edit', array('id' => $video->getId()));
         }
 
-        return $this->render('video/edit.html.twig', array(
+        return $this->render('video/new.html.twig', array(
             'video' => $video,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+	    'action' => 'edit'
         ));
     }
 
