@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class VideoType extends AbstractType
 {
@@ -13,7 +14,9 @@ class VideoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('slug')->add('title')->add('video_url')->add('description')->add('website')->add('speaker')->add('categories')->add('duration');
+        $builder->add('slug')->add('title')->add('video_url')->add('description', TextareaType::class, array(
+	    'attr' => array('class' => 'tinymce'),
+	))->add('website')->add('speaker')->add('categories')->add('duration');
     }/**
      * {@inheritdoc}
      */
