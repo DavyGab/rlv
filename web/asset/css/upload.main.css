@@ -179,6 +179,6 @@ form .progress {
     border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
-#drag-and-drop-zone h3 {
+#drag-and-drop-zone h3, #drag-and-drop-zone-thumbnail h3 {
     font-size: 17px;
 }

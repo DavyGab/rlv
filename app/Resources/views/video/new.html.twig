@@ -75,13 +75,30 @@
 
                                 <div class="btn btn-primary btn-block mb-5">
                                     <span>Open the file Browser</span>
-                                    <input type="file" id="form-files" title="Click to add Files" multiple="">
+                                    <input type="file" id="form-files" title="Click to add Files">
                                 </div>
+                                <input type="hidden" id="video_file" name="appbundle_video[video_path]">
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form-files-thumbnail">Thumbnail Image</label>
+                            <div id="drag-and-drop-zone-thumbnail" class="dm-uploader p-5 text-center">
+                                <h3 class="mb-5 mt-5 text-muted">Drag &amp; drop Files here</h3>
+
+                                <div class="btn btn-primary btn-block mb-5">
+                                    <span>Open the file Browser</span>
+                                    <input type="file" name="appbundle_video[thumbnail_image]" id="form-files-thumbnail" title="Click to add Files">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="form-group">
                             {{ form_label(form.categories, 'Categories', { 'attr': {'class': 'form-control'} }) }}
                             {{ form_widget(form.categories, { 'attr': {'class': 'form-control'} }) }}
@@ -183,8 +200,8 @@
 
 
         $('#drag-and-drop-zone').dmUploader({ //
-            url: "{{ path('video_fupload_file') }}",
-            maxFileSize: 3000000, // 3 Megs
+            url: "{{ path('video_upload_file') }}",
+            maxFileSize: 3000000000, // 3 Megs
             onDragEnter: function(){
                 // Happens when dragging something over the DnD area
                 this.addClass('active');
@@ -218,6 +235,8 @@
             },
             onUploadSuccess: function(id, data){
                 // A file was successfully uploaded
+                // Change the hidden parameter to save the value in database after form submit
+                $("#video_file").val(data.file);
                 ui_add_log('Server Response for file #' + id + ': ' + JSON.stringify(data));
                 ui_add_log('Upload of file #' + id + ' COMPLETED', 'success');
                 ui_multi_update_file_status(id, 'success', 'Upload Complete');
@@ -237,8 +256,29 @@
             }
         });
 
-    }
+        $('#drag-and-drop-zone-thumbnail').dmUploader({ //
+            url: "{{ path('video_upload_file') }}",
+            maxFileSize: 3000000, // 3 Megs
+            auto: false,
+            queue: false,
+            allowedTypes: 'image/*',
+            extFilter: ['jpg', 'jpeg','png','gif'],
+            onDragEnter: function(){
+                // Happens when dragging something over the DnD area
+                this.addClass('active');
+            },
+            onDragLeave: function(){
+                // Happens when dragging something OUT of the DnD area
+                this.removeClass('active');
+            },
+            onInit: function(){
+                // Plugin is ready to use
+                ui_add_log('Penguin initialized :)', 'info');
+            }
+        });
 
+
+    }
 
     function uploadProgressHandler(event)
     {

@@ -63,7 +63,7 @@ class VideoController extends Controller
     /**
      * Upload file for Video
      *
-     * @Route("/upload_file", name="video_fupload_file")
+     * @Route("/upload_file", name="video_upload_file")
      * @Method({"POST"})
      */
     public function uploadAction(Request $request)
