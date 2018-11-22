@@ -61,6 +61,21 @@ class VideoController extends Controller
     }
 
     /**
+     * Upload file for Video
+     *
+     * @Route("/upload_file", name="video_fupload_file")
+     * @Method({"POST"})
+     */
+    public function uploadAction(Request $request)
+    {
+        // @TODO : Upload file and return the temporary filename which will be stored in the database.
+        header('Content-Type: application/json');
+        $return = array('status' => 'success', 'file' => '/asset/media/test.mp4');
+        echo json_encode($return); exit;
+    }
+
+
+    /**
      * Finds and displays a video entity.
      *
      * @Route("/{id}", name="video_show")

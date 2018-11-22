@@ -1,0 +1,184 @@
+/* 
+ * 	First: A couple styles to make the demo page look good
+ * 	 */
+body {
+	padding-bottom: 2rem;
+}
+
+nav {
+	//border-top: 4px solid #28a745;
+}
+
+nav li.active {
+	border-bottom: 4px solid #28a745;	
+}
+
+.row {
+	margin-bottom: 1rem;
+}
+[class*="col-"] {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+hr {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.progress {
+	height: 1.5rem;
+}
+
+#files {
+    overflow-y: scroll !important;
+    min-height: 320px;
+}
+@media (min-width: 768px) {
+	#files {
+		min-height: 0;
+	}
+}
+
+#debug {
+	overflow-y: scroll !important;
+	height: 180px;	
+}
+
+
+/* These are for the single examle */
+.preview-img {
+	width: 64px;
+	height: 64px;
+}
+
+form {
+	border: solid #f7f7f9 !important;
+	padding: 1.5rem
+}
+
+form.active {
+	border-color: red !important;
+}
+
+form .progress {
+	height: 14px;
+}
+
+.dm-uploader {
+	border: 1px solid #E3E3E3 !important;
+        border-radius: 4px;
+	padding: 1.5rem
+}
+.dm-uploader.active {
+	border-color: red;
+
+	border-style: solid;
+}
+
+.dm-uploader .btn {
+    background-color: #1DC7EA !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+
+
+
+.bg-success {
+    background-color: #1DC7EA!important;
+}
+
+.progress-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    background-color: #007bff;
+    transition: width .6s ease;
+}
+
+.mb-1, .my-1 {
+    margin-bottom: .25rem!important;
+}
+
+.mb-2, .my-2 {
+    margin-bottom: .5rem!important;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.media-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+@media (min-width: 768px)
+#files {
+    min-height: 0;
+}
+
+#files {
+    overflow-y: scroll !important;
+    height: auto !important;
+}
+
+.p-2 {
+    padding: .5rem!important;
+}
+
+.flex-column {
+    -webkit-box-orient: vertical!important;
+    -webkit-box-direction: normal!important;
+    -ms-flex-direction: column!important;
+    flex-direction: column!important;
+}
+
+.d-flex {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+}
+
+.col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+#drag-and-drop-zone h3 {
+    font-size: 17px;
+}

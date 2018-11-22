@@ -1,177 +1,262 @@
 {% extends 'admin.video.layout.html.twig' %}
 {% block content %}
-    <div class="col-md-12">
-        <div class="card">
+<div class="col-md-12">
+    <div class="card">
 
-            <div class="card-header">
-                <h4 class="card-title">
-                    {% if action == 'create' %}
-                        Upload Video
-                    {% else %}
-                        Edit Video
-                    {% endif %}
-                </h4>
-            </div>
+        <div class="card-header">
+            <h4 class="card-title">
+                {% if action == 'create' %}
+                Upload Video
+                {% else %}
+                Edit Video
+                {% endif %}
+            </h4>
+        </div>
 
-            <div class="card-body">
-                <form method="post" action="{{ path('video_new') }}" name="video-upload" enctype="multipart/form-data" id="video-upload-form">
+        <div class="card-body">
+            <form method="post" action="{{ path('video_new') }}" name="video-upload" enctype="multipart/form-data" id="video-upload-form">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form_label(form.title, 'Title', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form_label(form.slug, 'Slug', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.slug, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.title, 'Title', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-5 pr-1">
-                            <div class="form-group">
-                                {{ form_label(form.speaker, 'Speaker', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.speaker, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 pl-1">
-                            <div class="form-group">
-                                {{ form_label(form.website, 'Website', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.website, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                {{ form_label(form.duration, 'Duration', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.duration, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{ form_label(form.website, 'Website', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.website, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {{ form_label(form.video_url, 'Url', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.video_url, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{ form_label(form.duration, 'Duration', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.duration, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {{ form_label(form.description, 'Description', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
-                        </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.video_url, 'Url', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.video_url, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form_label(form.categories, 'Categories', { 'attr': {'class': 'form-control'} }) }}
-                                {{ form_widget(form.categories, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="vidoeFile" >Select File</label>
-                                <input type="file" id="vidoeFile" name="video_file" class="form-control" />
-                            </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            {{ form_label(form.speaker, 'Speaker', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.speaker, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
 
-                    <div class="row">                        
-                        <div class="col-md-12">
-                            <div id="loader-icon">                            
-                                <div id="progress-bar" class="blue stripes">
-                                    <span class="progress-color progress-percent" style="width:10%; min-width:10%">10%</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ form_label(form.description, 'Description', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form-files">Video File</label>
+                            <div id="drag-and-drop-zone" class="dm-uploader p-5 text-center">
+                                <h3 class="mb-5 mt-5 text-muted">Drag &amp; drop Files here</h3>
+
+                                <div class="btn btn-primary btn-block mb-5">
+                                    <span>Open the file Browser</span>
+                                    <input type="file" id="form-files" title="Click to add Files" multiple="">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="submit" class="btn btn-info btn-fill pull-right"
-                                   value="{% if action == 'create' %}Create{% else %}Update{% endif %}"/>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.categories, 'Categories', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.categories, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
+                </div>
 
-                </form>
-            </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card h-100">
+                            <label for="form-files">
+                                Uploaded Files
+                            </label>
+
+                            <ul class="list-unstyled p-2 d-flex flex-column col form-control" id="files">
+                                <li class="text-muted text-center empty">No files uploaded.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-info btn-fill pull-right"
+                               value="{% if action == 'create' %}Create{% else %}Update{% endif %}"/>
+                    </div>
+                </div>
+
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}
 {% block javascriptSubMenu %}
-    <script type='text/javascript'>
-        var activePage = "page-upload-video";
+
+<!-- File item template -->
+<script type="text/html" id="files-template">
+    <li class="media">
+        <div class="media-body mb-1">
+            <p class="mb-2">
+                <strong>%%filename%%</strong> - Status: <span class="text-muted">Waiting</span>
+            </p>
+            <div class="progress mb-2">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+                     role="progressbar"
+                     style="width: 0%"
+                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+            <hr class="mt-1 mb-1" />
+        </div>
+    </li>
+</script>
+
+<!-- Debug item template -->
+<script type="text/html" id="debug-template">
+    <li class="list-group-item text-%%color%%"><strong>%%date%%</strong>: %%message%%</li>
+</script>
 
 
-        window.onload = function (we) {
-            $("#video-upload-form").on('submit',(function(e) {
-                $(".progress-color").width('0%');
-                $(".progress-percent").html('0%');
-                $('#loader-icon').fadeIn(10);
-                e.preventDefault();
-                $.ajax({
-                    url: $(this).attr("action"),
-                    type: $(this).attr("method"),
-                    data: new FormData(this),
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    xhr: function() {
-                          var xhr = new window.XMLHttpRequest();
-                          xhr.upload.addEventListener("progress",
-                                                      uploadProgressHandler,
-                                                      false
-                                                     );
-                          xhr.addEventListener("load", loadHandler, false);
-                          xhr.addEventListener("error", errorHandler, false);
-                          xhr.addEventListener("abort", abortHandler, false);
+<script type='text/javascript'>
+    var activePage = "page-upload-video";
 
-                          return xhr;					
-                    },
-                    success: function () {
-                        $('#loader-icon').fadeOut(2000);
-                    },
-                    resetForm: true
-                });
-                return false;
-            }));
-        }
+    window.onload = function (we) {
+        $('#appbundle_video_categories').select2();
+        $('#appbundle_video_speaker').select2();
+
+        $("#video-upload-form").on('submit',(function(e) {
+            $('#loader-icon').fadeIn(10);
+            e.preventDefault();
+            $.ajax({
+                url: $(this).attr("action"),
+                type: $(this).attr("method"),
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                cache: false,
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress",
+                        uploadProgressHandler,
+                        false
+                    );
+                    xhr.addEventListener("load", loadHandler, false);
+                    xhr.addEventListener("error", errorHandler, false);
+                    xhr.addEventListener("abort", abortHandler, false);
+
+                    return xhr;
+                },
+                success: function () {
+                    $(location).attr('href', "{{ path('video_index') }}");
+                },
+                resetForm: true
+            });
+            return false;
+        }));
 
 
-        function uploadProgressHandler(event)
-        {
-            var percent = (event.loaded / event.total) * 100;
-            var percentComplete = Math.round(percent);            
-            $(".progress-color").width(percentComplete + '%');
-            $(".progress-percent").html(percentComplete + ' %');
-        }
+        $('#drag-and-drop-zone').dmUploader({ //
+            url: "{{ path('video_fupload_file') }}",
+            maxFileSize: 3000000, // 3 Megs
+            onDragEnter: function(){
+                // Happens when dragging something over the DnD area
+                this.addClass('active');
+            },
+            onDragLeave: function(){
+                // Happens when dragging something OUT of the DnD area
+                this.removeClass('active');
+            },
+            onInit: function(){
+                // Plugin is ready to use
+                ui_add_log('Penguin initialized :)', 'info');
+            },
+            onComplete: function(){
+                // All files in the queue are processed (success or error)
+                ui_add_log('All pending tranfers finished');
+            },
+            onNewFile: function(id, file){
+                // When a new file is added using the file selector or the DnD area
+                ui_add_log('New file added #' + id);
+                ui_multi_add_file(id, file);
+            },
+            onBeforeUpload: function(id){
+                // about tho start uploading a file
+                ui_add_log('Starting the upload of #' + id);
+                ui_multi_update_file_progress(id, 0, '', true);
+                ui_multi_update_file_status(id, 'uploading', 'Uploading...');
+            },
+            onUploadProgress: function(id, percent){
+                // Updating file progress
+                ui_multi_update_file_progress(id, percent);
+            },
+            onUploadSuccess: function(id, data){
+                // A file was successfully uploaded
+                ui_add_log('Server Response for file #' + id + ': ' + JSON.stringify(data));
+                ui_add_log('Upload of file #' + id + ' COMPLETED', 'success');
+                ui_multi_update_file_status(id, 'success', 'Upload Complete');
+                ui_multi_update_file_progress(id, 100, 'success', false);
+            },
+            onUploadError: function(id, xhr, status, message){
+                // Happens when an upload error happens
+                ui_multi_update_file_status(id, 'danger', message);
+                ui_multi_update_file_progress(id, 0, 'danger', false);
+            },
+            onFallbackMode: function(){
+                // When the browser doesn't support this plugin :(
+                ui_add_log('Plugin cant be used here, running Fallback callback', 'danger');
+            },
+            onFileSizeError: function(file){
+                ui_add_log('File \'' + file.name + '\' cannot be added: size excess limit', 'danger');
+            }
+        });
 
-        function loadHandler(event)
-        {
-            console.log('loadHandler');
-        }
+    }
 
-        function errorHandler(event){
-            console.log('errorHandler');
-        }
 
-        function abortHandler(event){
-            console.log('abortHandler');
-        }
-    </script>
+    function uploadProgressHandler(event)
+    {
+        console.log('upload handler');
+    }
+
+    function loadHandler(event)
+    {
+        console.log('loadHandler');
+    }
+
+    function errorHandler(event){
+        console.log('errorHandler');
+    }
+
+    function abortHandler(event){
+        console.log('abortHandler');
+    }
+</script>
 {% endblock %}
+
