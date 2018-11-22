@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Video controller.
@@ -44,14 +45,17 @@ class VideoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // @TODO: Make provision to upload thumbnail image and update real path in following line.
+            $video->setThumbnailImage('/asset/media/test.jpg');
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
 
             return $this->redirectToRoute('video_show', array('id' => $video->getId()));
         }
-        
-       // var_dump('I am here'); die;
+
+        // var_dump('I am here'); die;
 
         return $this->render('video/new.html.twig', array(
             'video' => $video,
@@ -71,7 +75,8 @@ class VideoController extends Controller
         // @TODO : Upload file and return the temporary filename which will be stored in the database.
         header('Content-Type: application/json');
         $return = array('status' => 'success', 'file' => '/asset/media/test.mp4');
-        echo json_encode($return); exit;
+        echo json_encode($return);
+        exit;
     }
 
 
@@ -113,7 +118,7 @@ class VideoController extends Controller
             'video' => $video,
             'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-	    'action' => 'edit'
+            'action' => 'edit'
         ));
     }
 
@@ -149,7 +154,7 @@ class VideoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('video_delete', array('id' => $video->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
+

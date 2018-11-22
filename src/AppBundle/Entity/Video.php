@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -17,7 +18,7 @@ class Video
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @ORM\Column(type="string", length=255)
      *
@@ -29,23 +30,23 @@ class Video
      * @ORM\Column(type="string", length=255)
      *
      * @var string
-     */    
+     */
     private $title;
-    
+
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
-     */    
+     */
     private $videoUrl;
-    
+
     /**
      * @ORM\Column(type="string", length=1000)
      *
      * @var string
-     */    
+     */
     private $description;
-        
+
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="videos")
      * @ORM\JoinColumn(name="speaker_id", referencedColumnName="id")
@@ -56,9 +57,9 @@ class Video
      * @ORM\Column(type="integer")
      *
      * @var integer
-     */    
+     */
     private $website;
-        
+
     /**
      * @var \Doctrine\Common\Collections\Collection|Category[]
      *
@@ -79,163 +80,227 @@ class Video
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
-     */    
+     */
     private $createdAt;
-    
+
     /**
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
-     */    
+     */
     private $updatedAt;
 
     /**
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
-     */    
+     */
     private $publishedAt;
- 
+
     /**
      * @ORM\Column(type="integer")
      *
      * @var integer
      */
     private $duration;
-    
+
+    /**
+     * @ORM\Column(type="string", length=1000)
+     *
+     * @var string
+     */
+    private $thumbnailImage;
+
+    /**
+     * @ORM\Column(type="string", length=1000)
+     *
+     * @var string
+     */
+    private $videoPath;
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     *
      * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
-     * 
+     *
      * @var File
      */
-    private $imageFile;   
+    private $imageFile;
 
-    public function __construct() 
+    public function __construct()
     {
-        $this->createdAt = new \DateTime();        
+        $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->publishedAt = new \DateTime();
     }
 
-    public function getId() 
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getSlug() 
+    public function getSlug()
     {
         return $this->slug;
     }
 
-    public function getTitle() 
+    public function getTitle()
     {
         return $this->title;
     }
 
-    public function getVideoUrl() 
+    public function getVideoUrl()
     {
         return $this->videoUrl;
     }
 
-    public function getDescription() 
+    public function getDescription()
     {
         return $this->description;
     }
 
-    public function getSpeaker() 
+    public function getSpeaker()
     {
         return $this->speaker;
     }
 
-    public function getWebsite() 
+    public function getWebsite()
     {
         return $this->website;
     }
 
-    public function getCategories() 
+    public function getCategories()
     {
         return $this->categories;
     }
 
-    public function getCreatedAt() 
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt() 
+    public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
 
-    public function getPublishedAt() 
+    public function getPublishedAt()
     {
         return $this->publishedAt;
     }
-    
-    public function getDuration() {
+
+    public function getDuration()
+    {
         return $this->duration;
     }
 
-    public function getImageFile() {
+    public function getImageFile()
+    {
         return $this->imageFile;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
-    public function setSlug($slug) {
+    public function setSlug($slug)
+    {
         $this->slug = $slug;
     }
 
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
-    public function setVideoUrl($videoUrl) {
+    public function setVideoUrl($videoUrl)
+    {
         $this->videoUrl = $videoUrl;
     }
 
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    public function setSpeaker($speaker) {
+    public function setSpeaker($speaker)
+    {
         $this->speaker = $speaker;
     }
 
-    public function setWebsite($website) {
+    public function setWebsite($website)
+    {
         $this->website = $website;
     }
 
-    public function setCategories(\Doctrine\Common\Collections\Collection $categories) {
+    public function setCategories(\Doctrine\Common\Collections\Collection $categories)
+    {
         $this->categories = $categories;
     }
 
-    public function setCreatedAt(\DateTime $createdAt) {
+    public function setCreatedAt(\DateTime $createdAt)
+    {
         $this->createdAt = $createdAt;
     }
 
-    public function setUpdatedAt(\DateTime $updatedAt) {
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
         $this->updatedAt = $updatedAt;
     }
 
-    public function setPublishedAt(\DateTime $publishedAt) {
+    public function setPublishedAt(\DateTime $publishedAt)
+    {
         $this->publishedAt = $publishedAt;
     }
 
-    public function setDuration($duration) {
+    public function setDuration($duration)
+    {
         return $this->duration = $duration;
-    }    
-    
-    public function setImageFile(File $imageFile) {
+    }
+
+    public function setImageFile(File $imageFile)
+    {
         $this->imageFile = $imageFile;
     }
-    
-    public function getSpeakerName() {
+
+    public function getSpeakerName()
+    {
         $user = $this->getSpeaker();
         return $user->getFirstName()." ".$user->getLastName();
     }
+
+    /**
+     * @return string
+     */
+    public function getThumbnailImage()
+    {
+        return $this->thumbnailImage;
+    }
+
+    /**
+     * @param string $thumbnailImage
+     */
+    public function setThumbnailImage($thumbnailImage)
+    {
+        $this->thumbnailImage = $thumbnailImage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVideoPath()
+    {
+        return $this->videoPath;
+    }
+
+    /**
+     * @param mixed $videoPath
+     */
+    public function setVideoPath($videoPath)
+    {
+        $this->videoPath = $videoPath;
+    }
+
+
 }
