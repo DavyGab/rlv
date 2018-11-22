@@ -16,7 +16,7 @@ class VideoType extends AbstractType
     {
         $builder->add('slug')->add('title')->add('video_url')->add('description', TextareaType::class, array(
 	    'attr' => array('class' => 'tinymce'),
-	))->add('website')->add('speaker')->add('categories')->add('duration');
+	))->add('website')->add('speaker')->add('categories')->add('duration')->add('thumbnail_image')->add('video_path');
     }/**
      * {@inheritdoc}
      */

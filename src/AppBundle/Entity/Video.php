@@ -302,5 +302,9 @@ class Video
         $this->videoPath = $videoPath;
     }
 
+    public function updateSlug()
+    {
+        $this->slug = preg_replace("/-$/","",preg_replace('/[^a-z0-9]+/i', "-", strtolower($this->title)));
+    }
 
 }

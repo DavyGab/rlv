@@ -47,12 +47,13 @@ class VideoController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             // @TODO: Make provision to upload thumbnail image and update real path in following line.
             $video->setThumbnailImage('/asset/media/test.jpg');
+            $video->updateSlug();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
 
-            return $this->redirectToRoute('video_show', array('id' => $video->getId()));
+            return $this->redirectToRoute('video_index');
         }
 
         // var_dump('I am here'); die;
@@ -104,21 +105,25 @@ class VideoController extends Controller
      */
     public function editAction(Request $request, Video $video)
     {
-        $deleteForm = $this->createDeleteForm($video);
         $editForm = $this->createForm('AppBundle\Form\VideoType', $video);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            // @TODO: Make provision to upload thumbnail image and update real path in following line.
+            $video->setThumbnailImage('/asset/media/test.jpg');
+            $video->updateSlug();
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('video_edit', array('id' => $video->getId()));
+            return $this->redirectToRoute('video_index');
         }
+        
+        //foreach ($editForm->getErrors() as $error) {}
 
         return $this->render('video/new.html.twig', array(
             'video' => $video,
             'form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            'action' => 'edit'
+            'action' => 'edit',
+            'id' => $video->getId()
         ));
     }
 
