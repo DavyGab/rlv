@@ -25,16 +25,16 @@
                                 <div class="col-md-3 tile {% for category in video.getCategories() %}{{ category.getName()|e }} {% endfor %}">
                                     <div class="single-course">
                                         <div class="hvrbox">
-                                            <img src="/asset/images/1.jpg" alt="slide 1" class="hvrbox-layer_bottom">
+                                            <img src="{{ video.getThumbnailImage() }}" alt="slide 1" class="hvrbox-layer_bottom">
                                             <div class="hvrbox-layer_top hvrbox-text">
                                                 <div class="hvrbox-text">																	
-                                                    <a href="https://www.youtube.com/watch?v=gwinFP8_qIM" class="btn-circle video"><i class="fas fa-play"></i></a>
+                                                    <a href="{{ video.getVideoPath() }}" class="btn-circle video"><i class="fas fa-play"></i></a>
                                                     <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">Preview Course</a>	
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="single-course-content">
-                                            <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">{{ video.getDescription()|e }}</a>
+                                            <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">{{ video.getTitle()|e }}</a>
                                             <h3>
                                                 <p>Speaker: {{ video.getSpeakerName()|e }}</p>
                                                 <p>Duration: {{ video.getDuration()|e }} Minutes</p>

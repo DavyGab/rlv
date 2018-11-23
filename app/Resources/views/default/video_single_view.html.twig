@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="page-banner single-course-banner">
+        <div class="container">
+            <div class="course-info-1x" style="padding-bottom: 0px; font-size: 18px;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="course-info-left">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h3>{{ video.getTitle()|e }}</h3>
+                                </div>
+                            </div>						
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>        
+
+        <div class="container">
+            <div class="hvrbox">           
+                <video width="100%" controls>
+                    <source src="{{ video.getVideoPath() }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>	                     
+    </div>
+
+    <div class="container">
+        <div class="course-info-1x">	
+            <div class="row">	
+                <div class="col-md-4">
+                    <div class="course-info-left">
+                        <div class="media">
+                            <div class="media-body">
+                                <h3>Speaker: {{ video.getSpeakerName()|e }}</h3>
+                                <h4>Duration: {{ video.getDuration()|e }} Minutes</h4>
+                            </div>
+                        </div>						
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="course-info-left">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4>Categories</h4>
+                                <p>{{ video.getCategoryNames()|e }}
+                            </div>
+                        </div>						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>{{ video.getDescription()|e }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+    </script>
+{% endblock %}

@@ -72,13 +72,11 @@ class DefaultController extends Controller {
      * @Route("view/{slug}", name="view_single_video")
      * @Method({"GET"})
      */
-    public function viewVideoAction(Request $request) {
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
-            'categories' => $this->getVideoCategories(),
-            'videos' => $this->getVideosList()
-        ]);
-    }    
+    public function viewVideoAction(Request $request, $slug) {
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository(Video::class)->findOneBy(array('slug' => $slug));
+        return $this->render('default/video_single_view.html.twig', ['video' => $video]);
+    }
 
     /**
      * Get list of all categories from database.

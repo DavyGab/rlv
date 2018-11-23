@@ -306,5 +306,14 @@ class Video
     {
         $this->slug = preg_replace("/-$/","",preg_replace('/[^a-z0-9]+/i', "-", strtolower($this->title)));
     }
+    
+    public function getCategoryNames() 
+    {
+        $cat = [];
+        foreach($this->categories as $category) {
+            $cat[] = $category->getName();
+        }
+        return implode(", ",$cat);
+    }
 
 }
