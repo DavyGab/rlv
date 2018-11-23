@@ -35,7 +35,7 @@ class UserType extends AbstractType
                             'ROLE_USER' => 'ROLE_USER', 
                             'ROLE_CUSTOMER' => 'ROLE_CUSTOMER'
                         ],
-                    'expanded' => true,
+                    //'expanded' => true,
                     'multiple' => true,
                 ])
                 ->add('gender', ChoiceType::class, array(
