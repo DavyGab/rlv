@@ -1,0 +1,17 @@
+{% extends 'admin.base.html.twig' %}
+{% block body %}
+    <div id="content"> {% block content %}{% endblock %} </div>
+{% endblock %}
+
+{% block subMenuBar %}
+    <a title="List users" class="navbar-brand" id="page-video-list" href="{{ url('user_list') }}"><img src="/admin-assets/img/icon_user_list.png" height="32px" /></a>
+    <a title="Create User" class="navbar-brand" id="page-upload-video" href="{{ url('user_new') }}"><img src="/admin-assets/img/icon-user-plus-512.png" height="28px"/></a>
+{% endblock %}
+
+{% block javascripts %}
+    <script type='text/javascript'>
+        var activeMenu="menu-user";
+    </script>
+    {% block javascriptSubMenu %}
+    {% endblock %}    
+{% endblock %}

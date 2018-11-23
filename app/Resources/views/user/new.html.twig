@@ -1,0 +1,100 @@
+{% extends 'admin.user.layout.html.twig' %}
+{% block content %}
+<div class="col-md-12">
+    <div class="card">
+
+        <div class="card-header">
+            <h4 class="card-title">
+                {% if action == 'create' %}
+                Create User
+                {% else %}
+                Edit User
+                {% endif %}
+            </h4>
+        </div>
+
+        <div class="card-body">
+            
+            <div style="color:red">{{ form_errors(form) }}</div>
+            
+            <form method="post" action="{% if action == 'create' %}{{ path('user_new') }}{% else %}{{ path('user_edit', {'id':id}) }}{% endif %}" name="user-upload" enctype="multipart/form-data" id="user-upload-form">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.first_name, 'First Name', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.first_name, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.last_name, 'Last Name', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.last_name, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form_label(form.email, 'Email', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form_label(form.birth_date, 'Birth Date', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.birth_date, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                        
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form_label(form.gender, 'Gender', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.gender, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>                        
+
+                </div>
+                        
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.roles, 'Roles', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.roles, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                        
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.password, 'Password', { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.password, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-info btn-fill pull-right"
+                               value="{% if action == 'create' %}Create{% else %}Update{% endif %}"/>
+                    </div>
+                </div>
+                {{ form_row(form._token) }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascriptSubMenu %}
+
+<script type='text/javascript'>
+    var activePage = "page-upload-video";
+
+    window.onload = function (we) {
+        $('#appbundle_user_roles_0').select2();
+    }
+</script>
+{% endblock %}
+

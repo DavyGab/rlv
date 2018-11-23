@@ -95,4 +95,8 @@ class User extends BaseUser
     public function setLastName($lastName) {
         $this->lastName = $lastName;
     }
+    
+    public function getUserRoles() {
+        return implode(", ", $this->getRoles());
+    }
 }

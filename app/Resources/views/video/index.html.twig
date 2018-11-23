@@ -21,8 +21,6 @@
                         <th>Description</th>
                         <th>Website</th>
                         <th>Createdat</th>
-                        <th>Updatedat</th>
-                        <th>Publishedat</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -36,8 +34,6 @@
                         <td>{{ video.description }}</td>
                         <td>{{ video.website }}</td>
                         <td>{% if video.createdAt %}{{ video.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{% if video.updatedAt %}{{ video.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{% if video.publishedAt %}{{ video.publishedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td style="display:table-cell">
 				<a href="{{ path('video_edit', { 'id': video.id }) }}"><img src="/admin-assets/img/icon-edit-video.png"/> </a>
                 </td>
