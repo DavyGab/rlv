@@ -25,17 +25,16 @@
                                 <div class="col-md-3 tile {% for category in video.getCategories() %}{{ category.getName()|e }} {% endfor %}">
                                     <div class="single-course">
                                         <div class="hvrbox">
-                                            <img src="{{ video.getThumbnailImage() }}" alt="slide 1" class="hvrbox-layer_bottom">
+                                            <img src="{{ video.getThumbnailImage() }}" alt="{{ video.getSlug() }}" class="hvrbox-layer_bottom video-thumbnail">
                                             <div class="hvrbox-layer_top hvrbox-text">
-                                                <div class="hvrbox-text">																	
-                                                    <a href="{{ video.getVideoPath() }}" class="btn-circle video"><i class="fas fa-play"></i></a>
-                                                    <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">Preview Course</a>	
+                                                <div class="hvrbox-text">
+                                                    <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}" class="btn-circle"><i class="fas fa-play"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="single-course-content">
                                             <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">{{ video.getTitle()|e }}</a>
-                                            <h3>
+                                            <h3 class="speaker">
                                                 <p>Speaker: {{ video.getSpeakerName()|e }}</p>
                                                 <p>Duration: {{ video.getDuration()|e }} Minutes</p>
                                             </h3>
@@ -43,7 +42,7 @@
                                     </div>
                                 </div>                                
                             {% endfor %}
-                            
+
                             <div class="col-md-12 text-center" id="load-more-videos">
                                 <a href="javascript:void(0)" onclick="return loadMoreVideos();" class="btn-small"> View more </a>
                             </div>
@@ -55,22 +54,25 @@
         </div>
     </div>
 
-    <script type="text/javascript"> 
+    <script type="text/javascript">
         function loadMoreVideos() {
             $.ajax({
-               url:'{{ url("ajax_get_videos") }}',
-               type:"POST",   
-               dataType:"html",  
-               async:true,      
-               success: function(data, status) {  
+                url: '{{ url("ajax_get_videos") }}',
+                type: "POST",
+                dataType: "html",
+                async: true,
+                success: function (data, status) {
                     //$(".all-videos").append(data);
                     $(data).insertBefore("#load-more-videos");
-               },
-               error : function(xhr, textStatus, errorThrown) {  
-                  alert('Ajax request failed.');  
-               }  
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert('Ajax request failed.');
+                }
             });
         }
+        
+        window.onload = function (we) {
+        }
     </script>
-                            
+
 {% endblock %}

@@ -2,21 +2,20 @@
     <div class="col-md-3 tile {% for category in video.getCategories() %}{{ category.getName()|e }} {% endfor %}" style="display: inline-block;" data-bound>
         <div class="single-course">
             <div class="hvrbox">
-                <img src="/asset/images/1.jpg" alt="slide 1" class="hvrbox-layer_bottom">
+                <img src="{{ video.getThumbnailImage() }}" alt="{{ video.getSlug() }}" class="hvrbox-layer_bottom video-thumbnail">
                 <div class="hvrbox-layer_top hvrbox-text">
-                    <div class="hvrbox-text">																	
-                        <a href="https://www.youtube.com/watch?v=gwinFP8_qIM" class="btn-circle video"><i class="fas fa-play"></i></a>
-                        <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">Preview Course</a>	
+                    <div class="hvrbox-text">
+                        <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}" class="btn-circle"><i class="fas fa-play"></i></a>
                     </div>
                 </div>
             </div>
             <div class="single-course-content">
-                <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">{{ video.getDescription()|e }}</a>
-                <h3>
+                <a href="{{ url('view_single_video',{'slug': video.getSlug()}) }}">{{ video.getTitle()|e }}</a>
+                <h3 class="speaker">
                     <p>Speaker: {{ video.getSpeakerName()|e }}</p>
                     <p>Duration: {{ video.getDuration()|e }} Minutes</p>
                 </h3>
             </div>
         </div>
-    </div>                                
+    </div>
 {% endfor %}
