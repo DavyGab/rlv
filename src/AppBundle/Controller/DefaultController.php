@@ -12,40 +12,36 @@ use AppBundle\Entity\Video;
  * @Route("/")
  */
 class DefaultController extends Controller {
+    
+    /**
+     *
+     * @var type int
+     */
+    private $videosPerPage = 12;
+
 
     /**
      * @Route("", name="homepage")
      */
     public function indexAction(Request $request) {
-     
-        /*
-        $repository = $this->getDoctrine()
-            ->getRepository(Video::class);
-
-        $query = $repository->createQueryBuilder('v')
-            ->orderBy('v.createdAt', 'DESC')
-            ->setMaxResults(12)
-            ->getQuery();
-        $list = $query->getResult();
-        
-         * 
-         */
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
             'categories' => $this->getVideoCategories(),
-            //'videos' => $this->getVideosList()
-            'videos' => $this->getVideosList()
+            'videos' => $this->getVideosList($this->videosPerPage, null)
         ]);
     }
 
     /**
      * @Route("ajax/getVideos", name="ajax_get_videos")
      */    
-    public function ajaxGetVideoAction(Request $request) {
+    public function ajaxGetVideoAction(Request $request) {        
+        $categoryId = $request->request->get('category');
+        $loadedVideos = $request->request->get('loadedVideos');
+        $loadedVideos = explode(',', $loadedVideos);
         return $this->render('default/ajax.video.html.twig', [
             'categories' => $this->getVideoCategories(),
-            'videos' => $this->getVideosList()
-        ]);        
+            'videos' => $this->getVideosList($this->videosPerPage, $categoryId, $loadedVideos)
+        ]);
     }
 
     /**
@@ -85,39 +81,36 @@ class DefaultController extends Controller {
     private function getVideoCategories() {
         $em = $this->getDoctrine()->getManager();
         return $em->getRepository('AppBundle:Category')->findAll();
-        /*
-        return array_map(function($cat) {
-            return array('id' => $cat->getId(), 'name' => $cat->getName());
-        }, $categories);
-         */
     }
     
     /**;
      * Get list of all videos from database.
      * @return array
      */
-    private function getVideosList($limit = 12, $category = 'Sports') {
-        /*
-        $dql = "SELECT v.id, v.slug, v.description, FROM video v JOIN b.engineer e JOIN b.reporter r ORDER BY b.created DESC";
-        $query = $entityManager->createQuery($dql);
-        $query->setMaxResults(30);
-        $bugs = $query->getResult();        
-        */
+    private function getVideosList($limit = 12, $category = null, $loadedVideos= array()) {
+        $em = $this->getDoctrine()->getManager();
 
-        $repository = $this->getDoctrine()
-            ->getRepository(Video::class);
-
-        $qb = $repository->createQueryBuilder('v')
-            ->orderBy('v.createdAt', 'DESC')
-            ->setMaxResults($limit);
-        
-        // Set query in 
         if (!empty($category)) {
-            //$qb->add('where', 'v.Category.name=?1');
-            //$qb->setParameter('1', $category);
+            $qb = $em->createQueryBuilder();
+            $qb->select('v')
+               ->from('AppBundle:Video', 'v')
+               ->join('v.categories', 'AppBundle:Category')
+               ->where('AppBundle:Category.id=?1');
+            $qb->setParameter('1', $category);
+        } else {
+            $repository = $this->getDoctrine()
+                ->getRepository(Video::class);
+            $qb = $repository->createQueryBuilder('v');
         }
         
-        $query = $qb->getQuery();        
+       if (!empty($loadedVideos)) {
+          $qb->where('v.id NOT IN(?2)');
+          $qb->setParameter('2', $loadedVideos);           
+       }
+        
+        $qb->orderBy('v.createdAt', 'DESC');
+        $qb->setMaxResults($limit);
+        $query = $qb->getQuery();            
         return $query->getResult();
     }
 

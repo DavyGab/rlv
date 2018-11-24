@@ -1,5 +1,5 @@
 {% for video in videos %}
-    <div class="col-md-3 tile {% for category in video.getCategories() %}{{ category.getName()|e }} {% endfor %}" style="display: inline-block;" data-bound>
+    <div data-video-id="{{ video.getId() }}" class="col-md-3 div-video tile {% for category in video.getCategories() %}{{ category.getName()|e }} {% endfor %}" style="display: inline-block;" data-bound>
         <div class="single-course">
             <div class="hvrbox">
                 <img src="{{ video.getThumbnailImage() }}" alt="{{ video.getSlug() }}" class="hvrbox-layer_bottom video-thumbnail">

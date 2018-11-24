@@ -18,7 +18,6 @@
                         <th>Slug</th>
                         <th>Title</th>
                         <th>Video_url</th>
-                        <th>Description</th>
                         <th>Website</th>
                         <th>Createdat</th>
                         <th>Actions</th>
@@ -31,7 +30,6 @@
                         <td>{{ video.slug }}</td>
                         <td>{{ video.title }}</td>
                         <td>{{ video.videourl }}</td>
-                        <td>{{ video.description }}</td>
                         <td>{{ video.website }}</td>
                         <td>{% if video.createdAt %}{{ video.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td style="display:table-cell">

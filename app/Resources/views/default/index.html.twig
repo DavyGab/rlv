@@ -11,9 +11,9 @@
 
                 <div class="col-md-12">
                     <div id="filters" class="course-menu">
-                        <button class="filter active"  data-filter="all">All Courses</button>
+                        <button class="filter active btn-category" data-id="" data-filter="all">All Courses</button>
                         {% for category in categories %}
-                            <button class="filter" data-rel="{{ category.getName()|e }}" data-filter=".{{ category.getName()|e }}">{{ category.getName()|e }}</button>
+                            <button class="filter btn-category" data-id="{{ category.getId()|e }}" data-rel="{{ category.getName()|e }}" data-filter=".{{ category.getName()|e }}">{{ category.getName()|e }}</button>
                         {% endfor %}                       
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                     <div class="all-course">
                         <div class="row">
                             {% for video in videos %}
-                                <div class="col-md-3 tile {% for category in video.getCategories() %}{{ category.getName()|e }} {% endfor %}">
+                                <div data-video-id="{{ video.getId() }}" class="col-md-3 tile div-video {% for category in video.getCategories() %}{{ category.getName()|e }} {% endfor %}">
                                     <div class="single-course">
                                         <div class="hvrbox">
                                             <img src="{{ video.getThumbnailImage() }}" alt="{{ video.getSlug() }}" class="hvrbox-layer_bottom video-thumbnail">
@@ -55,23 +55,35 @@
     </div>
 
     <script type="text/javascript">
-        function loadMoreVideos() {
+        var currentCategory = '';
+        function loadMoreVideos() {            
+            // Do not load already loaded videos.
+            var loadedVideos = '';
+            $('.div-video').each(function() {
+                loadedVideos = loadedVideos+$(this).attr('data-video-id')+',';
+            });
+            loadedVideos = loadedVideos.replace(/,\s*$/, "");
+            
             $.ajax({
                 url: '{{ url("ajax_get_videos") }}',
                 type: "POST",
                 dataType: "html",
                 async: true,
+                data: {"category":currentCategory,"loadedVideos":loadedVideos},
                 success: function (data, status) {
-                    //$(".all-videos").append(data);
                     $(data).insertBefore("#load-more-videos");
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    alert('Ajax request failed.');
+                    console.log('Ajax request failed with error='+textStatus);
                 }
             });
         }
         
         window.onload = function (we) {
+            $('.btn-category').click(function(){
+                currentCategory = $(this).attr('data-id');
+                console.log('currentCategory='+currentCategory);
+            });
         }
     </script>
 
